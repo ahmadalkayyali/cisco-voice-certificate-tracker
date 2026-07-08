@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Notification History</h2>
+<table>
+<tr><th>ID</th><th>Certificate ID</th><th>Type</th><th>Sent To</th><th>Sent At</th><th>Status</th><th>Error</th></tr>
+{% for n in notifications %}
+<tr><td>{{ n.NotificationID }}</td><td>{{ n.CertificateID }}</td><td>{{ n.ReminderType }}</td><td>{{ n.SentTo }}</td><td>{{ n.SentAt }}</td><td>{{ n.DeliveryStatus }}</td><td>{{ n.ErrorMessage }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

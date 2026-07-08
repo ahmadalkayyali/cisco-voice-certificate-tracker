@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Scheduler Health</h2>
+<table>
+<tr><th>Run ID</th><th>Job</th><th>Started</th><th>Finished</th><th>Status</th><th>Checked</th><th>Sent</th><th>Error</th></tr>
+{% for r in runs %}
+<tr><td>{{ r.RunID }}</td><td>{{ r.JobName }}</td><td>{{ r.StartedAt }}</td><td>{{ r.FinishedAt }}</td><td>{{ r.RunStatus }}</td><td>{{ r.CertificatesChecked }}</td><td>{{ r.NotificationsSent }}</td><td>{{ r.ErrorMessage }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

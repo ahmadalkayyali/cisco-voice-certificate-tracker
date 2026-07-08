@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cisco Voice Certificate Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f6f7f9; color: #222; }
+        header { background: #1f2937; color: white; padding: 16px 24px; }
+        nav a { color: white; margin-right: 16px; text-decoration: none; }
+        main { padding: 24px; }
+        table { border-collapse: collapse; width: 100%; background: white; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #eef2f7; }
+        .cards { display: flex; gap: 16px; flex-wrap: wrap; }
+        .card { background: white; border: 1px solid #ddd; padding: 16px; border-radius: 8px; min-width: 150px; }
+        .flash { padding: 10px; background: #e7f7e7; border: 1px solid #7cc47c; margin-bottom: 16px; }
+        label { display: block; margin-top: 12px; }
+        input, select, textarea { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { margin-top: 16px; padding: 10px 16px; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Cisco Voice Certificate Tracker</h1>
+    <nav>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('certificates') }}">Certificates</a>
+        <a href="{{ url_for('add_certificate') }}">Add Certificate</a>
+        <a href="{{ url_for('servers') }}">Servers</a>
+        <a href="{{ url_for('notifications') }}">Notifications</a>
+        <a href="{{ url_for('scheduler_health') }}">Scheduler Health</a>
+    </nav>
+</header>
+<main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}<div class="flash">{{ message }}</div>{% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

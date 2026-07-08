@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Servers</h2>
+<table>
+<tr><th>Platform</th><th>Server</th><th>FQDN</th><th>Environment</th><th>Location</th><th>Owner</th><th>Active</th></tr>
+{% for s in servers %}
+<tr><td>{{ s.PlatformName }}</td><td>{{ s.ServerName }}</td><td>{{ s.FQDN }}</td><td>{{ s.EnvironmentName }}</td><td>{{ s.LocationName }}</td><td>{{ s.OwnerTeam }}</td><td>{{ s.IsActive }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

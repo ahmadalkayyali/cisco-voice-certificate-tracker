@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+<div class="cards">
+    <div class="card"><strong>Total</strong><br>{{ summary.TotalCertificates or 0 }}</div>
+    <div class="card"><strong>Expired</strong><br>{{ summary.ExpiredCount or 0 }}</div>
+    <div class="card"><strong>Critical 0-7</strong><br>{{ summary.CriticalCount or 0 }}</div>
+    <div class="card"><strong>High 8-14</strong><br>{{ summary.HighCount or 0 }}</div>
+    <div class="card"><strong>Medium 15-30</strong><br>{{ summary.MediumCount or 0 }}</div>
+    <div class="card"><strong>Watch 31-90</strong><br>{{ summary.WatchCount or 0 }}</div>
+</div>
+
+<h3>Expiring Certificates</h3>
+<table>
+<tr><th>Platform</th><th>Server</th><th>Certificate</th><th>Purpose</th><th>Expires</th><th>Days</th><th>Risk</th><th>Owner</th></tr>
+{% for c in expiring %}
+<tr>
+<td>{{ c.PlatformName }}</td><td>{{ c.ServerName }}</td><td>{{ c.CertificateName }}</td>
+<td>{{ c.CertificatePurpose }}</td><td>{{ c.ExpirationDate }}</td><td>{{ c.DaysUntilExpiration }}</td>
+<td>{{ c.RiskStatus }}</td><td>{{ c.OwnerTeam }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

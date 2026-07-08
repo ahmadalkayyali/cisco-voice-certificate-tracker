@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add Certificate</h2>
+<form method="post">
+    <label>Server</label>
+    <select name="server_id" required>
+        {% for s in servers %}
+        <option value="{{ s.ServerID }}">{{ s.PlatformName }} - {{ s.ServerName }} - {{ s.FQDN }}</option>
+        {% endfor %}
+    </select>
+    <label>Certificate Name</label><input name="certificate_name" required>
+    <label>Purpose</label><input name="certificate_purpose" required>
+    <label>Issuer</label><input name="issuer">
+    <label>Serial Number</label><input name="serial_number">
+    <label>Subject Name</label><input name="subject_name">
+    <label>SAN Entries</label><textarea name="san_entries"></textarea>
+    <label>Expiration Date</label><input name="expiration_date" type="date" required>
+    <label>Business Impact</label>
+    <select name="business_impact"><option>Low</option><option>Medium</option><option>High</option><option>Critical</option></select>
+    <label>Owner Team</label><input name="owner_team">
+    <label>Renewal Status</label>
+    <select name="renewal_status"><option>Not Started</option><option>Planning</option><option>In Progress</option><option>Completed</option><option>Do Not Renew</option></select>
+    <label>Dependency Notes</label><textarea name="dependency_notes"></textarea>
+    <button type="submit">Save Certificate</button>
+</form>
+{% endblock %}

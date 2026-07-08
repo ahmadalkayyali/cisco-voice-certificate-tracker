@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Certificates</h2>
+<table>
+<tr><th>Platform</th><th>Server</th><th>FQDN</th><th>Name</th><th>Purpose</th><th>Issuer</th><th>Expires</th><th>Days</th><th>Risk</th><th>Impact</th><th>Status</th></tr>
+{% for c in certificates %}
+<tr>
+<td>{{ c.PlatformName }}</td><td>{{ c.ServerName }}</td><td>{{ c.FQDN }}</td><td>{{ c.CertificateName }}</td>
+<td>{{ c.CertificatePurpose }}</td><td>{{ c.Issuer }}</td><td>{{ c.ExpirationDate }}</td><td>{{ c.DaysUntilExpiration }}</td>
+<td>{{ c.RiskStatus }}</td><td>{{ c.BusinessImpact }}</td><td>{{ c.RenewalStatus }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
